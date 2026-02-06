@@ -140,8 +140,8 @@ Approximate distribution: **15–20% high-risk**, reflecting prevalence reported
 
 ```bash
 # Clone
-git clone https://github.com/TarekMasryo/digital-habits-mental-health.git
-cd digital-habits-mental-health
+git clone https://github.com/tarekmasryo/health-intelligence-platform.git
+cd health-intelligence-platform
 
 # (Optional) create venv
 python -m venv .venv && source .venv/bin/activate
