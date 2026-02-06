@@ -1,12 +1,13 @@
-# 🌐 Digital Habits and Mental Health  
+# 🧠 Health Intelligence Platform
 
-[![Streamlit](https://img.shields.io/badge/Powered%20by-Streamlit-FF4B4B)](https://streamlit.io/)  
-[![Made with ❤️ by Tarek Masryo](https://img.shields.io/badge/Made%20by-Tarek%20Masryo-blue)](https://github.com/tarekmasryo)
+[![Streamlit](https://img.shields.io/badge/Powered%20by-Streamlit-FF4B4B)](https://streamlit.io/)
+[![Made by Tarek Masryo](https://img.shields.io/badge/Made%20by-Tarek%20Masryo-blue)](https://github.com/tarekmasryo)
 
-### Exploring the Impact of Screen Time and Digital Behavior on Psychological Wellbeing 🤖  
+### Decision-ready insights from behavioral and wellbeing signals 🤖
 
-A complete data science project examining how **digital lifestyles** influence **mental health** outcomes — including anxiety, depression, stress, happiness, focus, and productivity.  
-Includes a tabular dataset of **3,500 synthetic participant records** with **24 research-inspired features**, plus a reproducible notebook for **EDA, feature engineering, modeling, and explainability**.
+An interactive **Streamlit dashboard** + a complete data science workflow examining how screen time and digital behavior relate to psychological wellbeing — including anxiety, depression, stress, happiness, focus, and productivity.
+
+Includes a tabular dataset of **3,500 participant records** with **24 research-inspired features**, plus a companion notebook for **EDA, feature engineering, modeling, and explainability**.
 
 ---
 
@@ -14,7 +15,7 @@ Includes a tabular dataset of **3,500 synthetic participant records** with **24 
 
 Psychological and behavioral indicators  
 (e.g., `anxiety_score`, `depression_score`, `stress_level`, `happiness_score`, `focus_score`, `productivity_score`, `digital_dependence_score`)  
-are generated as **continuous synthetic scores modeled on a broad 0–100 range**, **not** fixed **0–10 Likert items**.
+are generated as **continuous scores modeled on a broad 0–100 range**, **not** fixed **0–10 Likert items**.
 
 This provides richer variance and makes the dataset more suitable for ML modeling and behavioral analytics.
 
@@ -24,10 +25,11 @@ This provides richer variance and makes the dataset more suitable for ML modelin
 
 | Component | Description |
 |:--|:--|
-| **Dataset** | 24 variables covering demographics, digital activity, and mental health indicators. |
+| **Dashboard** | Streamlit app for executive KPIs, risk segments, trends, and scenario simulation. |
+| **Dataset** | 24 variables covering demographics, digital activity, and wellbeing indicators. |
 | **Notebook** | Full ML pipeline (EDA → Feature Engineering → Modeling → Explainability). |
 | **Models** | Logistic Regression · Random Forest · XGBoost (GPU-ready). |
-| **Goal** | Predict high mental-health risk from behavioral and psychological patterns. |
+| **Goal** | Predict elevated wellbeing risk from behavioral and psychological patterns. |
 
 ---
 
@@ -44,44 +46,43 @@ This provides richer variance and makes the dataset more suitable for ML modelin
 
 ## 🧠 Feature Groups
 
-### 🧬 Demographics  
-Age · Gender · Region · Income Level · Education Level  
+### 🧬 Demographics
+Age · Gender · Region · Income Level · Education Level
 
-### 💻 Digital Behavior  
-Daily Screen Time · Phone Unlocks · Notifications · Social Media Hours · Study Time  
+### 💻 Digital Behavior
+Daily Screen Time · Phone Unlocks · Notifications · Social Media Hours · Study Time
 
-### 🧘 Mental Health Indicators  
-Anxiety · Depression · Stress · Happiness · Focus · Productivity  
+### 🧘 Wellbeing Indicators
+Anxiety · Depression · Stress · Happiness · Focus · Productivity
 
-### ⚠️ Risk Indicator  
+### ⚠️ Risk Indicator
 `high_risk_flag` — a binary label derived via a **multi-factor wellbeing score** combining digital intensity, emotional state, and cognitive balance.
 
 ---
 
 ## 📘 Target Definition
 
-The target variable **`high_risk_flag`** represents individuals with increased mental-health vulnerability.  
-It is defined using a scoring rule that blends:  
-- High digital activity (screen time, notifications, unlocks)  
-- Elevated stress/anxiety levels  
-- Lower happiness/focus scores  
+The target variable **`high_risk_flag`** represents individuals with increased wellbeing vulnerability.  
+It is defined using a scoring rule that blends:
 
-Approximate distribution: **15–20% high-risk**, reflecting prevalence reported in behavioral research.
+- High digital activity (screen time, notifications, unlocks)
+- Elevated stress/anxiety levels
+- Lower happiness/focus scores
+
+Approximate distribution: **15–20% high-risk**.
 
 ---
 
 ## 📸 Dashboard Preview
 
 ### 1️⃣ AI Health Intelligence — Hero Overview
-
 <p align="center">
-  <img src="assets/ai-health-hero.png" alt="AI Health Intelligence Platform — Hero overview with key KPIs" />
+  <img src="assets/ai-health-hero.png" alt="Health Intelligence Platform — Hero overview with key KPIs" />
 </p>
 
 ---
 
 ### 2️⃣ AI-Powered Insights Cards
-
 <p align="center">
   <img src="assets/ai-insights-cards.png" alt="AI-powered insights cards for risk, stress, digital exposure, and model performance" />
 </p>
@@ -89,7 +90,6 @@ Approximate distribution: **15–20% high-risk**, reflecting prevalence reported
 ---
 
 ### 3️⃣ Executive Risk Overview
-
 <p align="center">
   <img src="assets/executive-risk-overview.png" alt="Risk score distribution and risk segment donut chart" />
 </p>
@@ -97,7 +97,6 @@ Approximate distribution: **15–20% high-risk**, reflecting prevalence reported
 ---
 
 ### 4️⃣ 90-Day Population Health Trends
-
 <p align="center">
   <img src="assets/population-health-trends.png" alt="90-day trends for screen time, stress, wellbeing, sleep, high-risk population, and engagement" />
 </p>
@@ -105,7 +104,6 @@ Approximate distribution: **15–20% high-risk**, reflecting prevalence reported
 ---
 
 ### 5️⃣ Demographic Risk Breakdown
-
 <p align="center">
   <img src="assets/demographic-risk-breakdown.png" alt="Age, gender, location, and occupation risk distributions" />
 </p>
@@ -113,7 +111,6 @@ Approximate distribution: **15–20% high-risk**, reflecting prevalence reported
 ---
 
 ### 6️⃣ Digital Behavior & Activity Balance
-
 <p align="center">
   <img src="assets/digital-behavior-balance.png" alt="Hourly activity patterns, app usage, digital interaction metrics, and physical activity balance" />
 </p>
@@ -121,7 +118,6 @@ Approximate distribution: **15–20% high-risk**, reflecting prevalence reported
 ---
 
 ### 7️⃣ Model Insights & Correlations
-
 <p align="center">
   <img src="assets/model-insights-and-correlations.png" alt="Feature importance and relationships such as screen time vs sleep and stress vs wellbeing" />
 </p>
@@ -129,10 +125,18 @@ Approximate distribution: **15–20% high-risk**, reflecting prevalence reported
 ---
 
 ### 8️⃣ Scenario Simulator — Individual Risk Profile
-
 <p align="center">
   <img src="assets/scenario-simulator.png" alt="Scenario simulator with sliders, risk score, risk category, and radar profile view" />
 </p>
+
+---
+
+## 📎 Companion Notebook
+
+The end-to-end analysis and modeling notebook is available on Kaggle:
+
+- **Predicting Wellbeing Risk (EDA → FE → Modeling → Explainability)**  
+  https://www.kaggle.com/code/tarekmasryo/predicting-wellbeing-risk
 
 ---
 
@@ -154,9 +158,29 @@ python -m venv .venv
 # macOS/Linux:
 #   source .venv/bin/activate
 
+# Upgrade pip (recommended)
+python -m pip install --upgrade pip
+
 # Install dependencies
 pip install -r requirements.txt
 
 # Run the dashboard
 streamlit run app.py
 ```
+
+Open: **http://localhost:8501**
+
+---
+
+## 📁 Repo Structure
+
+- `app.py` — Streamlit dashboard entry point
+- `assets/` — dashboard screenshots used in the README
+- `requirements.txt` — runtime dependencies
+
+---
+
+## ⚠️ Disclaimer
+
+This project is for educational and research purposes only.  
+It is **not** a medical diagnostic tool and should not be used for clinical decision-making.
