@@ -143,12 +143,20 @@ Approximate distribution: **15–20% high-risk**, reflecting prevalence reported
 git clone https://github.com/tarekmasryo/health-intelligence-platform.git
 cd health-intelligence-platform
 
-# (Optional) create venv
-python -m venv .venv && source .venv/bin/activate
+# Create venv
+python -m venv .venv
+
+# Activate venv
+# Windows PowerShell:
+#   .\.venv\Scripts\Activate.ps1
+# Windows CMD:
+#   .\.venv\Scripts\activate.bat
+# macOS/Linux:
+#   source .venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the main notebook
-jupyter notebook notebooks/predicting-wellbeing-risk.ipynb
+# Run the dashboard
+streamlit run app.py
 ```
