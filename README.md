@@ -1,146 +1,94 @@
-# 🧠 Health Intelligence Platform
+# 🧠 Health Intelligence Platform (HIP)
 
 [![Streamlit](https://img.shields.io/badge/Powered%20by-Streamlit-FF4B4B)](https://streamlit.io/)
 [![Made by Tarek Masryo](https://img.shields.io/badge/Made%20by-Tarek%20Masryo-blue)](https://github.com/tarekmasryo)
 
-### Decision-ready insights from behavioral and wellbeing signals 🤖
+### 🤖 Decision-ready insights from digital behavior & wellbeing signals
 
-An interactive **Streamlit dashboard** + a complete data science workflow examining how screen time and digital behavior relate to psychological wellbeing — including anxiety, depression, stress, happiness, focus, and productivity.
-
-Includes a tabular dataset of **3,500 participant records** with **24 research-inspired features**, plus a companion notebook for **EDA, feature engineering, modeling, and explainability**.
-
----
-
-## 🔎 Important Note on Scoring
-
-Psychological and behavioral indicators  
-(e.g., `anxiety_score`, `depression_score`, `stress_level`, `happiness_score`, `focus_score`, `productivity_score`, `digital_dependence_score`)  
-are generated as **continuous scores modeled on a broad 0–100 range**, **not** fixed **0–10 Likert items**.
-
-This provides richer variance and makes the dataset more suitable for ML modeling and behavioral analytics.
+**Health Intelligence Platform** is a production-structured **Streamlit dashboard** that turns behavioral and wellbeing signals into:
+**risk scoring**, **segments**, **threshold policies**, and **exportable reports**.
 
 ---
 
-## 🧩 Project Overview
+## ✨ What you get
+
+✅ **Executive KPIs** (population snapshot + key rates)  
+✅ **Risk scoring** (`risk_score`) + configurable **threshold** → `high_risk`  
+✅ **Risk segments** (demographics × behavior slices)  
+✅ **Model performance** (ROC / PR / confusion matrix + threshold trade-offs)  
+✅ **Intervention simulator** (what-if sliders to see risk movement)  
+✅ **Clinical-style exports** (downloadable cohort CSVs)
+
+---
+
+## 🧩 Project overview
 
 | Component | Description |
 |:--|:--|
-| **Dashboard** | Streamlit app for executive KPIs, risk segments, trends, and scenario simulation. |
-| **Dataset** | 24 variables covering demographics, digital activity, and wellbeing indicators. |
-| **Notebook** | Full ML pipeline (EDA → Feature Engineering → Modeling → Explainability). |
-| **Models** | Logistic Regression · Random Forest · XGBoost (GPU-ready). |
-| **Goal** | Predict elevated wellbeing risk from behavioral and psychological patterns. |
+| **Dashboard** | Streamlit app for executive KPIs, risk segments, trends, simulation & reports |
+| **Core logic** | Reusable Python package: scoring, metrics, insights, data utilities |
+| **Tests** | Pytest suite for core + entrypoint checks |
+| **Tooling** | Ruff formatter/linter + optional pre-commit hooks |
 
 ---
 
-## 📊 Dataset Summary
+## 🧠 Scoring & labels
 
-| Metric | Value |
-|:--|:--|
-| Rows | **3,500** |
-| Columns | **24** |
-| Target | **high_risk_flag** |
-| Type | Tabular (CSV) |
+The app uses a continuous **risk score**:
 
----
+- `risk_score` is computed from behavioral + wellbeing features
+- `high_risk` is derived by applying a configurable threshold:
+  - `high_risk = (risk_score >= threshold)`
 
-## 🧠 Feature Groups
-
-### 🧬 Demographics
-Age · Gender · Region · Income Level · Education Level
-
-### 💻 Digital Behavior
-Daily Screen Time · Phone Unlocks · Notifications · Social Media Hours · Study Time
-
-### 🧘 Wellbeing Indicators
-Anxiety · Depression · Stress · Happiness · Focus · Productivity
-
-### ⚠️ Risk Indicator
-`high_risk_flag` — a binary label derived via a **multi-factor wellbeing score** combining digital intensity, emotional state, and cognitive balance.
+This makes the dashboard **decision-oriented**: you can tune the threshold to balance **coverage vs. false positives**.
 
 ---
 
-## 📘 Target Definition
-
-The target variable **`high_risk_flag`** represents individuals with increased wellbeing vulnerability.  
-It is defined using a scoring rule that blends:
-
-- High digital activity (screen time, notifications, unlocks)
-- Elevated stress/anxiety levels
-- Lower happiness/focus scores
-
-Approximate distribution: **15–20% high-risk**.
-
----
-
-## 📸 Dashboard Preview
+## 📸 Dashboard preview
 
 ### 1️⃣ AI Health Intelligence — Hero Overview
 <p align="center">
-  <img src="assets/ai-health-hero.png" alt="Health Intelligence Platform — Hero overview with key KPIs" />
+  <img src="assets/ai-health-hero.png" alt="Hero overview with KPIs" />
 </p>
-
----
 
 ### 2️⃣ AI-Powered Insights Cards
 <p align="center">
-  <img src="assets/ai-insights-cards.png" alt="AI-powered insights cards for risk, stress, digital exposure, and model performance" />
+  <img src="assets/ai-insights-cards.png" alt="AI-powered insight cards" />
 </p>
-
----
 
 ### 3️⃣ Executive Risk Overview
 <p align="center">
-  <img src="assets/executive-risk-overview.png" alt="Risk score distribution and risk segment donut chart" />
+  <img src="assets/executive-risk-overview.png" alt="Risk distribution and segments" />
 </p>
-
----
 
 ### 4️⃣ 90-Day Population Health Trends
 <p align="center">
-  <img src="assets/population-health-trends.png" alt="90-day trends for screen time, stress, wellbeing, sleep, high-risk population, and engagement" />
+  <img src="assets/population-health-trends.png" alt="Population-level trends" />
 </p>
-
----
 
 ### 5️⃣ Demographic Risk Breakdown
 <p align="center">
-  <img src="assets/demographic-risk-breakdown.png" alt="Age, gender, location, and occupation risk distributions" />
+  <img src="assets/demographic-risk-breakdown.png" alt="Demographic slices" />
 </p>
-
----
 
 ### 6️⃣ Digital Behavior & Activity Balance
 <p align="center">
-  <img src="assets/digital-behavior-balance.png" alt="Hourly activity patterns, app usage, digital interaction metrics, and physical activity balance" />
+  <img src="assets/digital-behavior-balance.png" alt="Behavior analytics" />
 </p>
-
----
 
 ### 7️⃣ Model Insights & Correlations
 <p align="center">
-  <img src="assets/model-insights-and-correlations.png" alt="Feature importance and relationships such as screen time vs sleep and stress vs wellbeing" />
+  <img src="assets/model-insights-and-correlations.png" alt="Model insights and correlations" />
 </p>
-
----
 
 ### 8️⃣ Scenario Simulator — Individual Risk Profile
 <p align="center">
-  <img src="assets/scenario-simulator.png" alt="Scenario simulator with sliders, risk score, risk category, and radar profile view" />
+  <img src="assets/scenario-simulator.png" alt="Intervention simulator" />
 </p>
 
 ---
 
-## 📎 Companion Notebook
-
-The end-to-end analysis and modeling notebook is available on Kaggle:
-
-- **Predicting Wellbeing Risk (EDA → FE → Modeling → Explainability)**  
-  https://www.kaggle.com/code/tarekmasryo/predicting-wellbeing-risk
-
----
-
-## 🚀 Quick Start
+## 🚀 Quick start
 
 ```bash
 # Clone
@@ -153,16 +101,12 @@ python -m venv .venv
 # Activate venv
 # Windows PowerShell:
 #   .\.venv\Scripts\Activate.ps1
-# Windows CMD:
-#   .\.venv\Scripts\activate.bat
 # macOS/Linux:
 #   source .venv/bin/activate
 
-# Upgrade pip (recommended)
+# Install runtime deps
 python -m pip install --upgrade pip
-
-# Install dependencies
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 # Run the dashboard
 streamlit run app.py
@@ -172,15 +116,80 @@ Open: **http://localhost:8501**
 
 ---
 
-## 📁 Repo Structure
+## 🧪 Dev workflow (format • lint • tests)
 
-- `app.py` — Streamlit dashboard entry point
-- `assets/` — dashboard screenshots used in the README
-- `requirements.txt` — runtime dependencies
+```bash
+python -m pip install -r requirements-dev.txt
+```
+
+### 🧼 Format
+```bash
+python -m ruff format .
+python -m ruff format --check .
+```
+
+### 🧯 Lint
+```bash
+python -m ruff check .
+```
+
+### ✅ Tests
+```bash
+pytest -q
+```
+
+> 💡 On Windows, if `ruff` is not recognized as a command, always use `python -m ruff ...`
+
+---
+
+## 📁 Repo structure
+
+```
+.
+├── app.py                  # Streamlit entrypoint (thin wrapper)
+├── hip/                    # Main package (core + web)
+│   ├── __init__.py
+│   ├── core/               # scoring, metrics, insights, data utilities
+│   └── web/                # Streamlit UI (layout, tabs, styles)
+├── tests/                  # pytest suite
+├── assets/                 # README screenshots
+├── requirements.txt
+├── requirements-dev.txt
+└── pyproject.toml
+```
+
+### 🧠 Why `hip/` exists
+`hip/` makes the project:
+- **importable** (clean boundaries instead of a single giant script)
+- **testable** (core logic can be tested without Streamlit runtime)
+- **maintainable** (core logic separated from UI)
+
+---
+
+## 🛠️ Common fix (Windows launcher error)
+
+If you unzip/copy the project and it contains an old `.venv`, you may see errors referencing a previous path.
+Fix:
+1) Delete `.venv`
+2) Create a fresh one:
+```bash
+python -m venv .venv
+```
+3) Reinstall dependencies.
+
+---
+
+## 📎 Companion Notebook (optional)
+
+- Kaggle notebook (EDA → FE → Modeling):  
+  https://www.kaggle.com/code/tarekmasryo/predicting-wellbeing-risk
+
+---
+
+## 📜 License
+See `LICENSE`.
 
 ---
 
 ## ⚠️ Disclaimer
-
-This project is for educational and research purposes only.  
-It is **not** a medical diagnostic tool and should not be used for clinical decision-making.
+Educational / research only — not medical advice or clinical diagnosis.
