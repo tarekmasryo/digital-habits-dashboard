@@ -186,8 +186,9 @@ python -m venv .venv
 
 ---
 
-## 📜 License
-See `LICENSE`.
+## 📄 License
+
+Apache License 2.0. See [LICENSE](LICENSE).
 
 ---
 
