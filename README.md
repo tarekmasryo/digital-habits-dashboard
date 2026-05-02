@@ -5,8 +5,8 @@
 
 ### 🤖 Decision-ready insights from digital behavior & wellbeing signals
 
-**Health Intelligence Platform** is a production-structured **Streamlit dashboard** that turns behavioral and wellbeing signals into:
-**risk scoring**, **segments**, **threshold policies**, and **exportable reports**.
+**Health Intelligence Platform** is a production-structured **Streamlit dashboard** that uses synthetic behavioral and wellbeing signals to produce:
+**risk scoring**, **segments**, **threshold policies**, and **exportable cohort reports**.
 
 ---
 
@@ -17,7 +17,7 @@
 ✅ **Risk segments** (demographics × behavior slices)  
 ✅ **Model performance** (ROC / PR / confusion matrix + threshold trade-offs)  
 ✅ **Intervention simulator** (what-if sliders to see risk movement)  
-✅ **Clinical-style exports** (downloadable cohort CSVs)
+✅ **Cohort exports** (downloadable cohort CSVs)
 
 ---
 
