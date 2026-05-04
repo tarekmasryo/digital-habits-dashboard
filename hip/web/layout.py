@@ -89,8 +89,7 @@ def render_sidebar(df: pd.DataFrame) -> AppState:
         st.markdown("### 📊 Display Preferences")
 
         show_animations = st.checkbox("Enable Animations", value=True)
-        show_insights = st.checkbox("AI-Powered Insights", value=True)
-        show_advanced_metrics = st.checkbox("Advanced Analytics", value=True)
+        show_insights = st.checkbox("Policy Insights", value=True)
         real_time_mode = st.checkbox("Real-Time Mode (UI only)", value=False)
 
         st.markdown("---")
@@ -98,7 +97,7 @@ def render_sidebar(df: pd.DataFrame) -> AppState:
 
         export_format = st.selectbox("Export Format", ["CSV", "JSON"])
 
-        if st.button("📊 Export Dataset", use_container_width=True):
+        if st.button("📊 Export Dataset", width="stretch"):
             if export_format == "CSV":
                 data = df.to_csv(index=False).encode("utf-8")
                 st.download_button(
@@ -106,7 +105,7 @@ def render_sidebar(df: pd.DataFrame) -> AppState:
                     data=data,
                     file_name=f"health_data_{datetime.now().strftime('%Y%m%d')}.csv",
                     mime="text/csv",
-                    use_container_width=True,
+                    width="stretch",
                 )
             elif export_format == "JSON":
                 data = df.to_json(orient="records", indent=2).encode("utf-8")
@@ -115,7 +114,7 @@ def render_sidebar(df: pd.DataFrame) -> AppState:
                     data=data,
                     file_name=f"health_data_{datetime.now().strftime('%Y%m%d')}.json",
                     mime="application/json",
-                    use_container_width=True,
+                    width="stretch",
                 )
 
     filters = FilterState(
@@ -130,7 +129,6 @@ def render_sidebar(df: pd.DataFrame) -> AppState:
     display = DisplayState(
         show_animations=show_animations,
         show_insights=show_insights,
-        show_advanced_metrics=show_advanced_metrics,
         real_time_mode=real_time_mode,
     )
     return AppState(filters=filters, display=display)
@@ -143,10 +141,10 @@ def render_hero() -> None:
     <div style='text-align: center;'>
         <h1 class='hero-title'>🧬 AI Health Intelligence Platform</h1>
         <p class='hero-subtitle'>
-            Advanced predictive analytics for digital wellbeing and mental health risk assessment
+            Decision-ready analytics for simulated digital wellbeing risk patterns
         </p>
         <p style='color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-top: 15px;'>
-            Interactive monitoring • Machine learning predictions • Scenario-based interventions
+            Risk scoring • Threshold policies • Scenario-based cohort review
         </p>
     </div>
 </div>
@@ -193,8 +191,8 @@ def render_kpis(plot_df: pd.DataFrame, metrics: dict[str, float], threshold: flo
     <div class='metric-card'>
         <div class='metric-icon'>🎯</div>
         <div class='metric-value'>{metrics["auc"]:.3f}</div>
-        <div class='metric-label'>Model AUC</div>
-        <div class='metric-change'>Predictive performance</div>
+        <div class='metric-label'>Policy AUC</div>
+        <div class='metric-change'>Scoring diagnostics</div>
     </div>
     """,
             unsafe_allow_html=True,
@@ -244,7 +242,9 @@ def render_kpis(plot_df: pd.DataFrame, metrics: dict[str, float], threshold: flo
         )
 
     with col3:
-        if "flagged" in plot_df.columns:
+        if "flagged_for_review" in plot_df.columns:
+            flagged_series = plot_df["flagged_for_review"]
+        elif "flagged" in plot_df.columns:
             flagged_series = plot_df["flagged"]
         elif "risk_score" in plot_df.columns:
             flagged_series = (plot_df["risk_score"] >= threshold).astype(int)
@@ -289,8 +289,8 @@ def render_ai_insights(insights: list[dict[str, str]] | None, max_items: int = 6
     <div class='section-header'>
         <div class='section-icon'>🤖</div>
         <div>
-            <div class='section-title'>AI-Powered Insights</div>
-            <div class='section-subtitle'>Machine learning analysis and recommendations</div>
+            <div class='section-title'>Policy Insights</div>
+            <div class='section-subtitle'>Scoring-policy signals and review guidance</div>
         </div>
     </div>
     """,

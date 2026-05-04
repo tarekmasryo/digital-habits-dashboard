@@ -9,7 +9,6 @@ from hip.core.filtering import FilterState
 class DisplayState:
     show_animations: bool
     show_insights: bool
-    show_advanced_metrics: bool
     real_time_mode: bool
 
 

@@ -22,4 +22,6 @@ jobs:
           ruff format --check .
           ruff check .
       - name: Tests
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
         run: pytest

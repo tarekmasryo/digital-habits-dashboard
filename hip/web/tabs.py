@@ -61,7 +61,7 @@ def render_executive_dashboard(
             font=dict(color="#ffffff", size=12),
             margin=dict(l=40, r=20, t=20, b=40),
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         st.markdown("#### Risk Segment Distribution")
@@ -89,7 +89,7 @@ def render_executive_dashboard(
             margin=dict(l=20, r=20, t=20, b=20),
             showlegend=True,
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("#### 90-Day Population Health Trends")
@@ -202,7 +202,7 @@ def render_executive_dashboard(
     fig.update_xaxes(showgrid=True, gridcolor="rgba(255,255,255,0.1)")
     fig.update_yaxes(showgrid=True, gridcolor="rgba(255,255,255,0.1)")
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2, col3, col4 = st.columns(4)
@@ -224,7 +224,7 @@ def render_executive_dashboard(
             font=dict(color="#ffffff"),
             showlegend=False,
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         st.markdown("#### Gender Distribution")
@@ -246,7 +246,7 @@ def render_executive_dashboard(
             font=dict(color="#ffffff"),
             showlegend=False,
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col3:
         st.markdown("#### Location Distribution")
@@ -263,7 +263,7 @@ def render_executive_dashboard(
             paper_bgcolor="rgba(0,0,0,0)",
             font=dict(color="#ffffff"),
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col4:
         st.markdown("#### Occupation (Avg Risk)")
@@ -282,7 +282,7 @@ def render_executive_dashboard(
             font=dict(color="#ffffff"),
             showlegend=False,
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
 
 def render_advanced_risk_assessment(
@@ -339,7 +339,7 @@ def render_advanced_risk_assessment(
             font=dict(color="#ffffff", size=10),
             margin=dict(l=120, r=40, t=20, b=120),
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         st.markdown("#### Risk Distribution by Segment")
@@ -359,7 +359,7 @@ def render_advanced_risk_assessment(
             font=dict(color="#ffffff"),
             yaxis_title="Risk Score",
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2 = st.columns(2)
@@ -395,7 +395,7 @@ def render_advanced_risk_assessment(
             font=dict(color="#ffffff", size=13),
             margin=dict(l=100, r=20, t=20, b=80),
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         st.markdown("#### ROC Curve Analysis")
@@ -429,7 +429,7 @@ def render_advanced_risk_assessment(
             xaxis_title="False Positive Rate",
             yaxis_title="True Positive Rate",
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("#### Risk Factor Importance (Conceptual)")
@@ -465,7 +465,7 @@ def render_advanced_risk_assessment(
         xaxis_title="Relative Importance (Model Coefficients)",
         showlegend=False,
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2 = st.columns(2)
@@ -492,7 +492,7 @@ def render_advanced_risk_assessment(
                 paper_bgcolor="rgba(0,0,0,0)",
                 font=dict(color="#ffffff"),
             )
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
     with col2:
         st.markdown("#### Stress vs Wellbeing")
@@ -516,7 +516,7 @@ def render_advanced_risk_assessment(
                 paper_bgcolor="rgba(0,0,0,0)",
                 font=dict(color="#ffffff"),
             )
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
 
 def render_behavioral_analytics(plot_df: pd.DataFrame, hourly_df: pd.DataFrame) -> None:
@@ -599,7 +599,7 @@ def render_behavioral_analytics(plot_df: pd.DataFrame, hourly_df: pd.DataFrame) 
     )
     fig.update_yaxes(title_text="Psychological Metrics", secondary_y=True)
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
@@ -637,7 +637,7 @@ def render_behavioral_analytics(plot_df: pd.DataFrame, hourly_df: pd.DataFrame) 
             paper_bgcolor="rgba(0,0,0,0)",
             font=dict(color="#ffffff"),
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         st.markdown("#### Digital Interaction Metrics")
@@ -671,7 +671,7 @@ def render_behavioral_analytics(plot_df: pd.DataFrame, hourly_df: pd.DataFrame) 
             font=dict(color="#ffffff"),
             barmode="group",
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col3:
         st.markdown("#### Physical Activity Balance")
@@ -699,7 +699,7 @@ def render_behavioral_analytics(plot_df: pd.DataFrame, hourly_df: pd.DataFrame) 
             font=dict(color="#ffffff"),
             showlegend=False,
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("#### Population Health Indicators")
@@ -739,7 +739,7 @@ def render_behavioral_analytics(plot_df: pd.DataFrame, hourly_df: pd.DataFrame) 
         )
 
 
-def render_model_performance(
+def render_scoring_diagnostics(
     plot_df: pd.DataFrame,
     df_metrics: pd.DataFrame,
     metrics: dict[str, float],
@@ -751,8 +751,8 @@ def render_model_performance(
     <div class='section-header'>
         <div class='section-icon'>🔬</div>
         <div>
-            <div class='section-title'>ML Model Performance</div>
-            <div class='section-subtitle'>Evaluation and diagnostics on the current cohort</div>
+            <div class='section-title'>Scoring Policy Diagnostics</div>
+            <div class='section-subtitle'>Threshold, calibration, and trade-off diagnostics for the simulated scoring policy</div>
         </div>
     </div>
     """,
@@ -762,7 +762,7 @@ def render_model_performance(
     col1, col2, col3, col4, col5 = st.columns(5)
 
     metrics_data = [
-        ("AUC-ROC", metrics["auc"], "🎯"),
+        ("Policy AUC", metrics["auc"], "🎯"),
         ("Precision", metrics["precision"], "🔍"),
         ("Recall", metrics["recall"], "📊"),
         ("F1 Score", metrics["f1"], "⚡"),
@@ -844,7 +844,7 @@ def render_model_performance(
             xaxis_title="Decision Threshold",
             yaxis_title="Score",
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         st.markdown("#### Precision-Recall Curve")
@@ -871,7 +871,7 @@ def render_model_performance(
             xaxis_title="Recall",
             yaxis_title="Precision",
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("#### Model Calibration Analysis")
@@ -912,7 +912,7 @@ def render_model_performance(
         xaxis_title="Predicted Risk Score",
         yaxis_title="Observed Event Rate",
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 
 def render_intervention_simulator(
@@ -989,7 +989,7 @@ def render_intervention_simulator(
         sim_loneliness = st.slider("Loneliness (1-10)", 1.0, 10.0, 4.5, 0.5, key="sim_loneliness")
 
         st.markdown("<br>", unsafe_allow_html=True)
-        if st.button("🔄 Reset to Population Baseline", use_container_width=True):
+        if st.button("🔄 Reset to Population Baseline", width="stretch"):
             st.rerun()
 
     base_features = {
@@ -1152,7 +1152,7 @@ def render_intervention_simulator(
             font=dict(color="#ffffff"),
             barmode="group",
         )
-        st.plotly_chart(fig_comp, use_container_width=True)
+        st.plotly_chart(fig_comp, width="stretch")
 
     with col_right:
         st.markdown("#### 🧬 Profile Radar View")
@@ -1206,7 +1206,7 @@ def render_intervention_simulator(
             ),
             showlegend=False,
         )
-        st.plotly_chart(fig_radar, use_container_width=True)
+        st.plotly_chart(fig_radar, width="stretch")
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("#### 🧭 Quick Intervention What-If Scenarios")
@@ -1304,10 +1304,10 @@ def render_intervention_simulator(
     )
     fig_sens.update_xaxes(showgrid=True, gridcolor="rgba(255,255,255,0.14)")
     fig_sens.update_yaxes(showgrid=True, gridcolor="rgba(255,255,255,0.14)")
-    st.plotly_chart(fig_sens, use_container_width=True)
+    st.plotly_chart(fig_sens, width="stretch")
 
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("#### 💡 AI-Generated Recommendations")
+    st.markdown("#### Policy-Based Recommendations")
 
     recommendations = []
 
@@ -1330,7 +1330,7 @@ def render_intervention_simulator(
         recommendations.append(
             (
                 "danger",
-                "🔴 Severe sleep deficit. Establish a consistent sleep schedule, limit screens before bedtime, and consider medical follow-up if problems persist.",
+                "🔴 Severe sleep deficit. Establish a consistent sleep schedule, limit screens before bedtime, and consider appropriate professional support if concerns persist.",
             )
         )
     elif sim_sleep < 7:
@@ -1345,7 +1345,7 @@ def render_intervention_simulator(
         recommendations.append(
             (
                 "danger",
-                "🔴 Elevated psychological stress and anxiety. Structured support (for example, counseling or therapy) may be beneficial.",
+                "🔴 Elevated psychological stress and anxiety. Structured support or a wellbeing check-in may be appropriate.",
             )
         )
 
@@ -1403,21 +1403,21 @@ def render_intervention_simulator(
         )
 
 
-def render_clinical_reports(plot_df: pd.DataFrame) -> None:
+def render_cohort_reports(plot_df: pd.DataFrame) -> None:
     st.markdown(
         """
     <div class='section-header'>
         <div class='section-icon'>🏥</div>
         <div>
-            <div class='section-title'>Clinical Intelligence Reports</div>
-            <div class='section-subtitle'>High-risk users and summary indicators</div>
+            <div class='section-title'>Cohort Reports</div>
+            <div class='section-subtitle'>Priority review cohorts and summary indicators</div>
         </div>
     </div>
     """,
         unsafe_allow_html=True,
     )
 
-    st.markdown("#### 🚨 Critical Risk Users - Priority List")
+    st.markdown("#### Priority Review Queue")
 
     if len(plot_df) > 0:
         top_risk = plot_df.nlargest(
@@ -1450,16 +1450,16 @@ def render_clinical_reports(plot_df: pd.DataFrame) -> None:
 
         st.dataframe(
             top_risk.drop(columns=["last_active"]),
-            use_container_width=True,
+            width="stretch",
             height=500,
         )
 
-        if st.button("📄 Export High-Risk Report (CSV)", use_container_width=False):
+        if st.button("Export Priority Review CSV", width="content"):
             csv_data = top_risk.to_csv(index=False).encode("utf-8")
             st.download_button(
-                "⬇️ Download Report",
+                "Download Priority Review CSV",
                 data=csv_data,
-                file_name=f"high_risk_users_{datetime.now().strftime('%Y%m%d_%H%M')}.csv",
+                file_name=f"priority_review_queue_{datetime.now().strftime('%Y%m%d_%H%M')}.csv",
                 mime="text/csv",
             )
     else:
@@ -1476,7 +1476,7 @@ def render_clinical_reports(plot_df: pd.DataFrame) -> None:
                 plot_df["risk_segment"].value_counts().rename_axis("risk_segment").to_frame("count")
             )
             risk_summary["percentage"] = (risk_summary["count"] / len(plot_df) * 100).round(1)
-            st.dataframe(risk_summary, use_container_width=True)
+            st.dataframe(risk_summary, width="stretch")
         else:
             st.write("No data available for summary.")
 
@@ -1498,7 +1498,7 @@ def render_clinical_reports(plot_df: pd.DataFrame) -> None:
                 .round(2)
                 .to_frame(name="Average Score")
             )
-            st.dataframe(mental_health_avg, use_container_width=True)
+            st.dataframe(mental_health_avg, width="stretch")
         else:
             st.write("No data available for summary.")
 
@@ -1522,6 +1522,6 @@ def render_clinical_reports(plot_df: pd.DataFrame) -> None:
                 .round(2)
                 .to_frame(name="Average Value")
             )
-            st.dataframe(behavior_avg, use_container_width=True)
+            st.dataframe(behavior_avg, width="stretch")
         else:
             st.write("No data available for summary.")

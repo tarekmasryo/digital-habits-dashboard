@@ -1,13 +1,15 @@
 """Streamlit entrypoint.
 
-We keep side effects behind a main-guard so the module can be imported in unit
-tests (and by tooling) without starting the Streamlit runtime.
+Side effects stay behind ``main`` so unit tests and tooling can import this
+module without requiring the Streamlit runtime to start immediately.
 """
 
-from hip.web.app import run
+from __future__ import annotations
 
 
 def main() -> None:
+    from hip.web.app import run
+
     run()
 
 

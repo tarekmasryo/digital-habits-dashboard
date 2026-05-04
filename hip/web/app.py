@@ -11,10 +11,10 @@ from hip.web.styles import apply_global_styles
 from hip.web.tabs import (
     render_advanced_risk_assessment,
     render_behavioral_analytics,
-    render_clinical_reports,
+    render_cohort_reports,
     render_executive_dashboard,
     render_intervention_simulator,
-    render_model_performance,
+    render_scoring_diagnostics,
 )
 
 
@@ -38,6 +38,7 @@ def run() -> None:
 
     filtered_df, no_filter_data = apply_filters(data.population, state.filters)
     plot_df = filtered_df.copy() if not no_filter_data else data.population.copy()
+    plot_df["flagged_for_review"] = (plot_df["risk_score"] >= state.filters.threshold).astype(int)
 
     df_metrics = plot_df if plot_df["high_risk"].nunique() >= 2 else data.population.copy()
     metrics_scope = "Filtered Data" if df_metrics is plot_df else "Full Population"
@@ -54,12 +55,12 @@ def run() -> None:
 
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
         [
-            "📊 Executive Dashboard",
-            "🎯 Risk Analytics",
-            "🧠 Behavioral Insights",
-            "📈 Model Performance",
-            "💡 Intervention Simulator",
-            "🏥 Clinical Reports",
+            "Executive Dashboard",
+            "Risk Analytics",
+            "Behavioral Insights",
+            "Scoring Diagnostics",
+            "Intervention Simulator",
+            "Cohort Reports",
         ]
     )
 
@@ -73,7 +74,7 @@ def run() -> None:
         render_behavioral_analytics(plot_df, data.hourly)
 
     with tab4:
-        render_model_performance(
+        render_scoring_diagnostics(
             plot_df, df_metrics, metrics, state.filters.threshold, metrics_scope
         )
 
@@ -83,4 +84,4 @@ def run() -> None:
         )
 
     with tab6:
-        render_clinical_reports(plot_df)
+        render_cohort_reports(plot_df)

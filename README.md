@@ -12,11 +12,11 @@
 
 ## ✨ What you get
 
-✅ **Executive KPIs** (population snapshot + key rates)  
-✅ **Risk scoring** (`risk_score`) + configurable **threshold** → `high_risk`  
-✅ **Risk segments** (demographics × behavior slices)  
-✅ **Model performance** (ROC / PR / confusion matrix + threshold trade-offs)  
-✅ **Intervention simulator** (what-if sliders to see risk movement)  
+✅ **Executive KPIs** (population snapshot + key rates)
+✅ **Risk scoring** (`risk_score`) + configurable **threshold** → `flagged_for_review`
+✅ **Risk segments** (demographics × behavior slices)
+✅ **Scoring diagnostics** (ROC / PR / confusion matrix + threshold trade-offs on simulated labels)
+✅ **Intervention simulator** (what-if sliders to see risk movement)
 ✅ **Cohort exports** (downloadable cohort CSVs)
 
 ---
@@ -32,15 +32,16 @@
 
 ---
 
-## 🧠 Scoring & labels
+## 🧠 Scoring, labels, and thresholds
 
-The app uses a continuous **risk score**:
+The dashboard uses simulated behavioral and wellbeing data.
 
-- `risk_score` is computed from behavioral + wellbeing features
-- `high_risk` is derived by applying a configurable threshold:
-  - `high_risk = (risk_score >= threshold)`
+- `risk_score` is a transparent scoring-policy output between 0 and 1.
+- `high_risk` is a synthetic outcome label sampled from the generated risk probability.
+- The sidebar threshold controls operational flagging for review:
+  - `flagged_for_review = risk_score >= threshold`
 
-This makes the dashboard **decision-oriented**: you can tune the threshold to balance **coverage vs. false positives**.
+The diagnostics are intended to explain threshold trade-offs and scoring behavior on simulated data. They are not clinical validation metrics and should not be interpreted as medical evidence.
 
 ---
 
@@ -51,9 +52,9 @@ This makes the dashboard **decision-oriented**: you can tune the threshold to ba
   <img src="assets/ai-health-hero.png" alt="Hero overview with KPIs" />
 </p>
 
-### 2️⃣ AI-Powered Insights Cards
+### 2️⃣ Policy Insights Cards
 <p align="center">
-  <img src="assets/ai-insights-cards.png" alt="AI-powered insight cards" />
+  <img src="assets/ai-insights-cards.png" alt="Policy insight cards" />
 </p>
 
 ### 3️⃣ Executive Risk Overview
@@ -76,9 +77,9 @@ This makes the dashboard **decision-oriented**: you can tune the threshold to ba
   <img src="assets/digital-behavior-balance.png" alt="Behavior analytics" />
 </p>
 
-### 7️⃣ Model Insights & Correlations
+### 7️⃣ Scoring Diagnostics & Correlations
 <p align="center">
-  <img src="assets/model-insights-and-correlations.png" alt="Model insights and correlations" />
+  <img src="assets/model-insights-and-correlations.png" alt="Scoring diagnostics and correlations" />
 </p>
 
 ### 8️⃣ Scenario Simulator — Individual Risk Profile
@@ -135,6 +136,12 @@ python -m ruff check .
 
 ### ✅ Tests
 ```bash
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q
+```
+
+Windows PowerShell:
+```powershell
+$env:PYTEST_DISABLE_PLUGIN_AUTOLOAD="1"
 pytest -q
 ```
 
@@ -181,7 +188,7 @@ python -m venv .venv
 
 ## 📎 Companion Notebook (optional)
 
-- Kaggle notebook (EDA → FE → Modeling):  
+- Kaggle notebook (EDA → FE → Modeling):
   https://www.kaggle.com/code/tarekmasryo/predicting-wellbeing-risk
 
 ---
@@ -193,4 +200,4 @@ Apache License 2.0. See [LICENSE](LICENSE).
 ---
 
 ## ⚠️ Disclaimer
-Educational / research only — not medical advice or clinical diagnosis.
+Educational / portfolio use only — simulated data, not medical advice, clinical diagnosis, or a validated healthcare product.

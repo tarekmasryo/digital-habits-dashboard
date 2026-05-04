@@ -14,8 +14,8 @@ def generate_ai_insights(df_view: pd.DataFrame, metrics: dict):
         insights.append(
             {
                 "type": "danger",
-                "title": "🚨 CRITICAL: High Risk Alert",
-                "text": f"{high_risk_pct:.1f}% of monitored population in high-risk category. Systematic intervention programs are recommended.",
+                "title": "Priority Review Concentration",
+                "text": f"{high_risk_pct:.1f}% of monitored population in high-risk category. A structured review workflow is recommended.",
                 "priority": "critical",
             }
         )
@@ -23,8 +23,8 @@ def generate_ai_insights(df_view: pd.DataFrame, metrics: dict):
         insights.append(
             {
                 "type": "warning",
-                "title": "⚠️ WARNING: Elevated Risk Levels",
-                "text": f"{high_risk_pct:.1f}% high-risk users detected. Targeted support strategies are advised.",
+                "title": "Elevated Review Load",
+                "text": f"{high_risk_pct:.1f}% high-risk users detected. Targeted cohort review is advised.",
                 "priority": "high",
             }
         )
@@ -69,8 +69,8 @@ def generate_ai_insights(df_view: pd.DataFrame, metrics: dict):
         insights.append(
             {
                 "type": "success",
-                "title": "✅ Model Performance: Strong Signal",
-                "text": f"Predictive performance on this dataset is strong (AUC: {metrics['auc']:.3f}). Risk stratification is internally consistent with the available features.",
+                "title": "Scoring Policy: Strong Separation",
+                "text": f"The simulated scoring policy shows strong separation (AUC: {metrics['auc']:.3f}). Risk stratification is internally consistent with the simulated features.",
                 "priority": "low",
             }
         )
@@ -78,8 +78,8 @@ def generate_ai_insights(df_view: pd.DataFrame, metrics: dict):
         insights.append(
             {
                 "type": "warning",
-                "title": "⚠️ Model Performance Warning",
-                "text": f"AUC {metrics['auc']:.3f} is below the preferred range for reliable screening. Consider recalibration or feature refinement.",
+                "title": "Scoring Policy Warning",
+                "text": f"AUC {metrics['auc']:.3f} is below the preferred range for this scoring simulation. Consider recalibrating the scoring weights or segment thresholds.",
                 "priority": "medium",
             }
         )
@@ -90,7 +90,7 @@ def generate_ai_insights(df_view: pd.DataFrame, metrics: dict):
             {
                 "type": "warning",
                 "title": "👥 Social Isolation Signal",
-                "text": f"Average loneliness score: {avg_loneliness:.1f}/10. Social support and engagement may be helpful.",
+                "text": f"Average loneliness score: {avg_loneliness:.1f}/10. Social support and engagement actions may be appropriate.",
                 "priority": "medium",
             }
         )

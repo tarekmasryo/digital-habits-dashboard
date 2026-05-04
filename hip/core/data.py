@@ -137,7 +137,7 @@ def generate_advanced_data(
         10,
     )
 
-    logit = (
+    raw_signal = (
         0.62 * (screen_hours - 7)
         + 0.58 * (stress - 5.5)
         + 0.52 * (anxiety - 5)
@@ -150,18 +150,18 @@ def generate_advanced_data(
         + 0.18 * ((social_minutes - 165) / 70)
         - 0.15 * ((exercise_minutes - 40) / 35)
         - 0.12 * ((outdoor_time - 55) / 55)
-        + 0.2 * (loneliness - 4.5)
+        + 0.20 * (loneliness - 4.5)
         - 0.18 * (social_support - 7)
-        + rng.normal(0, 0.8, size=n_users)
     )
 
+    logit = -2.0 + 0.30 * raw_signal + rng.normal(0, 0.60, size=n_users)
     risk_score = 1.0 / (1.0 + np.exp(-logit))
     risk_score = np.clip(risk_score, 0.01, 0.99)
     high_risk = (rng.random(n_users) < risk_score).astype(int)
 
     risk_segment = pd.cut(
         risk_score,
-        bins=[0.0, 0.30, 0.60, 1.0],
+        bins=[0.0, 0.40, 0.75, 1.0],
         labels=["Low Risk", "Moderate Risk", "High Risk"],
     )
 
