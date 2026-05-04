@@ -5,19 +5,18 @@
 
 ### 🤖 Decision-ready insights from digital behavior & wellbeing signals
 
-**Health Intelligence Platform** is a production-structured **Streamlit dashboard** that uses synthetic behavioral and wellbeing signals to produce:
-**risk scoring**, **segments**, **threshold policies**, and **exportable cohort reports**.
+**Health Intelligence Platform** is a production-structured **Streamlit dashboard** that uses synthetic behavioral and wellbeing signals to produce **risk scoring**, **segments**, **threshold policies**, and **exportable cohort reports**.
 
 ---
 
 ## ✨ What you get
 
-✅ **Executive KPIs** (population snapshot + key rates)
-✅ **Risk scoring** (`risk_score`) + configurable **threshold** → `flagged_for_review`
-✅ **Risk segments** (demographics × behavior slices)
-✅ **Scoring diagnostics** (ROC / PR / confusion matrix + threshold trade-offs on simulated labels)
-✅ **Intervention simulator** (what-if sliders to see risk movement)
-✅ **Cohort exports** (downloadable cohort CSVs)
+- ✅ **Executive KPIs** (population snapshot + key rates)
+- ✅ **Risk scoring** (`risk_score`) + configurable **threshold** → `flagged_for_review`
+- ✅ **Risk segments** (demographics × behavior slices)
+- ✅ **Scoring diagnostics** (ROC / PR / confusion matrix + threshold trade-offs on simulated labels)
+- ✅ **Scenario simulator** (what-if sliders to see risk movement)
+- ✅ **Cohort exports** (downloadable cohort CSVs)
 
 ---
 
@@ -25,10 +24,10 @@
 
 | Component | Description |
 |:--|:--|
-| **Dashboard** | Streamlit app for executive KPIs, risk segments, trends, simulation & reports |
-| **Core logic** | Reusable Python package: scoring, metrics, insights, data utilities |
-| **Tests** | Pytest suite for core + entrypoint checks |
-| **Tooling** | Ruff formatter/linter + optional pre-commit hooks |
+| **Dashboard** | Streamlit app for executive KPIs, risk segments, trends, simulation, and reports |
+| **Core logic** | Reusable Python package for scoring, metrics, insights, and data utilities |
+| **Tests** | Pytest suite for core logic and entrypoint checks |
+| **Tooling** | Ruff formatter/linter plus optional pre-commit hooks |
 
 ---
 
@@ -48,43 +47,51 @@ The diagnostics are intended to explain threshold trade-offs and scoring behavio
 ## 📸 Dashboard preview
 
 ### 1️⃣ AI Health Intelligence — Hero Overview
+
 <p align="center">
   <img src="assets/ai-health-hero.png" alt="Hero overview with KPIs" />
 </p>
 
 ### 2️⃣ Policy Insights Cards
+
 <p align="center">
   <img src="assets/ai-insights-cards.png" alt="Policy insight cards" />
 </p>
 
 ### 3️⃣ Executive Risk Overview
+
 <p align="center">
   <img src="assets/executive-risk-overview.png" alt="Risk distribution and segments" />
 </p>
 
 ### 4️⃣ 90-Day Population Health Trends
+
 <p align="center">
   <img src="assets/population-health-trends.png" alt="Population-level trends" />
 </p>
 
 ### 5️⃣ Demographic Risk Breakdown
+
 <p align="center">
   <img src="assets/demographic-risk-breakdown.png" alt="Demographic slices" />
 </p>
 
 ### 6️⃣ Digital Behavior & Activity Balance
+
 <p align="center">
   <img src="assets/digital-behavior-balance.png" alt="Behavior analytics" />
 </p>
 
 ### 7️⃣ Scoring Diagnostics & Correlations
+
 <p align="center">
   <img src="assets/model-insights-and-correlations.png" alt="Scoring diagnostics and correlations" />
 </p>
 
 ### 8️⃣ Scenario Simulator — Individual Risk Profile
+
 <p align="center">
-  <img src="assets/scenario-simulator.png" alt="Intervention simulator" />
+  <img src="assets/scenario-simulator.png" alt="Scenario simulator" />
 </p>
 
 ---
@@ -96,16 +103,16 @@ The diagnostics are intended to explain threshold trade-offs and scoring behavio
 git clone https://github.com/tarekmasryo/health-intelligence-platform.git
 cd health-intelligence-platform
 
-# Create venv
+# Create virtual environment
 python -m venv .venv
 
-# Activate venv
+# Activate virtual environment
 # Windows PowerShell:
 #   .\.venv\Scripts\Activate.ps1
 # macOS/Linux:
 #   source .venv/bin/activate
 
-# Install runtime deps
+# Install runtime dependencies
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 
@@ -117,48 +124,54 @@ Open: **http://localhost:8501**
 
 ---
 
-## 🧪 Dev workflow (format • lint • tests)
+## 🧪 Dev workflow
+
+Install development dependencies:
 
 ```bash
 python -m pip install -r requirements-dev.txt
 ```
 
-### 🧼 Format
+### Format
+
 ```bash
 python -m ruff format .
 python -m ruff format --check .
 ```
 
-### 🧯 Lint
+### Lint
+
 ```bash
 python -m ruff check .
 ```
 
-### ✅ Tests
+### Tests
+
 ```bash
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q
 ```
 
 Windows PowerShell:
+
 ```powershell
 $env:PYTEST_DISABLE_PLUGIN_AUTOLOAD="1"
 pytest -q
 ```
 
-> 💡 On Windows, if `ruff` is not recognized as a command, always use `python -m ruff ...`
+> 💡 On Windows, if `ruff` is not recognized as a command, use `python -m ruff ...`.
 
 ---
 
 ## 📁 Repo structure
 
-```
+```text
 .
 ├── app.py                  # Streamlit entrypoint (thin wrapper)
 ├── hip/                    # Main package (core + web)
 │   ├── __init__.py
-│   ├── core/               # scoring, metrics, insights, data utilities
-│   └── web/                # Streamlit UI (layout, tabs, styles)
-├── tests/                  # pytest suite
+│   ├── core/               # Scoring, metrics, insights, data utilities
+│   └── web/                # Streamlit UI, layout, tabs, styles
+├── tests/                  # Pytest suite
 ├── assets/                 # README screenshots
 ├── requirements.txt
 ├── requirements-dev.txt
@@ -166,30 +179,45 @@ pytest -q
 ```
 
 ### 🧠 Why `hip/` exists
+
 `hip/` makes the project:
-- **importable** (clean boundaries instead of a single giant script)
-- **testable** (core logic can be tested without Streamlit runtime)
-- **maintainable** (core logic separated from UI)
+
+- **importable** — clean package boundaries instead of one large script
+- **testable** — core logic can be tested without the Streamlit runtime
+- **maintainable** — scoring, metrics, and UI code are separated
 
 ---
 
-## 🛠️ Common fix (Windows launcher error)
+## 🛠️ Common fix: Windows launcher error
 
-If you unzip/copy the project and it contains an old `.venv`, you may see errors referencing a previous path.
+If you unzip or copy the project and it contains an old `.venv`, you may see errors referencing a previous path.
+
 Fix:
-1) Delete `.venv`
-2) Create a fresh one:
+
+1. Delete `.venv`
+2. Create a fresh virtual environment:
+
 ```bash
 python -m venv .venv
 ```
-3) Reinstall dependencies.
+
+3. Reinstall dependencies:
+
+```bash
+python -m pip install -r requirements.txt
+```
 
 ---
 
-## 📎 Companion Notebook (optional)
+## 📎 Companion Notebook
 
-- Kaggle notebook (EDA → FE → Modeling):
-  https://www.kaggle.com/code/tarekmasryo/predicting-wellbeing-risk
+A companion Kaggle notebook can be linked here when published.
+
+Suggested companion flow:
+
+```text
+EDA → feature engineering → baseline modeling → dashboard handoff
+```
 
 ---
 
@@ -200,4 +228,5 @@ Apache License 2.0. See [LICENSE](LICENSE).
 ---
 
 ## ⚠️ Disclaimer
+
 Educational / portfolio use only — simulated data, not medical advice, clinical diagnosis, or a validated healthcare product.
